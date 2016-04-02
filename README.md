@@ -1,7 +1,7 @@
 # jmh-tutorial
 a sample project to show how to use jmh
 
-# to run the sample
+# how to run the sample
 
 ```
 mvn clean install

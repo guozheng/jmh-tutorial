@@ -4,8 +4,6 @@ import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
-import org.openjdk.jmh.infra.Blackhole;
-
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
@@ -60,6 +58,14 @@ public class Multiplication {
         return product;
     }
 
+    /**
+     * To run this benchmark class:
+     *
+     * java -cp target/benchmarks.jar com.tutorial.jmh.Multiplication
+     *
+     * @param args
+     * @throws RunnerException
+     */
     public static void main(String[] args) throws RunnerException {
         Options options = new OptionsBuilder()
             .include(Multiplication.class.getSimpleName())
