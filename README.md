@@ -1,17 +1,60 @@
 # jmh-tutorial
-a sample project to show how to use jmh
 
-# how to run the sample
+a sample project to show how to use jmh. Currently, it includes two benchmarks:
 
-```
+* *logger performance comparison*: compares slf4j with log4j binding and log4j2 performance
+
+## how to run the sample
+
+To run all the benchmarks:
+
+```bash
 mvn clean install
 java -jar target/benchmarks.jar #default behavior -wi 20 -i 20 -f 10
 java -jar target/benchmarks.jar -wi 5 -i 5 -f 1
 ```
 
-# `jmh` command line options
+To run individual benchmarks:
 
+```bash
+mvn clean install
+java -cp target/benchmark.jar com.tutorial.jmh.LoggerPerformance #runs logger performance benchmark
+java -cp target/benchmark.jar com.tutorial.jmh.Multiplication #runs multiplication benchmark
 ```
+
+## sample benchmark results
+
+Here is some sample benchmark results. It shows that log4j2 logger has x50 throughput compared with slf4j with log4j binding. It also shows that using a primitive long value has more than 3000x throughput than using BigInteger when doing multiplication.
+
+```bash
+# Run complete. Total time: 00:02:50
+
+Benchmark                                 Mode    Cnt          Score          Error   Units
+LoggerPerformance.testLog4j2             thrpt      5  497266495.488 ± 37639153.467   ops/s
+LoggerPerformance.testLog4j2CheckLevel   thrpt      5  493116489.550 ± 27628495.284   ops/s
+LoggerPerformance.testSlf4j              thrpt      5   12103070.008 ±  1392945.915   ops/s
+LoggerPerformance.testSlf4jCheckLevel    thrpt      5   11807391.240 ±  2244919.154   ops/s
+Multiplication.test10                    thrpt      5       3152.392 ±      406.268  ops/us
+Multiplication.test10BigInteger          thrpt      5          1.105 ±        0.054  ops/us
+Multiplication.test20                    thrpt      5       3202.390 ±      401.265  ops/us
+Multiplication.test20BigInteger          thrpt      5          0.514 ±        0.029  ops/us
+Multiplication.test10                     avgt      5         ≈ 10⁻³                  us/op
+Multiplication.test10BigInteger           avgt      5          0.903 ±        0.055   us/op
+Multiplication.test20                     avgt      5         ≈ 10⁻⁴                  us/op
+Multiplication.test20BigInteger           avgt      5          1.959 ±        0.113   us/op
+Multiplication.test10                   sample  63727          0.044 ±        0.002   us/op
+Multiplication.test10BigInteger         sample  86209          0.953 ±        0.055   us/op
+Multiplication.test20                   sample  64363          0.042 ±        0.001   us/op
+Multiplication.test20BigInteger         sample  79731          1.992 ±        0.036   us/op
+Multiplication.test10                       ss      5          1.434 ±        0.919   us/op
+Multiplication.test10BigInteger             ss      5         71.377 ±       51.099   us/op
+Multiplication.test20                       ss      5          1.404 ±        1.085   us/op
+Multiplication.test20BigInteger             ss      5        176.121 ±      100.931   us/op
+```
+
+## `jmh` command line options
+
+```bash
 $ java -jar target/benchmarks.jar -h
 
 Usage: java -jar ... [regexp*] [options]
