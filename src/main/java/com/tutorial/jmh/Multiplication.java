@@ -16,28 +16,28 @@ public class Multiplication {
 
     @Benchmark
     @BenchmarkMode(Mode.All)
-    @OutputTimeUnit(TimeUnit.MICROSECONDS)
+    @OutputTimeUnit(TimeUnit.SECONDS)
     public void test10() {
         testMethod(10);
     }
 
     @Benchmark
     @BenchmarkMode(Mode.All)
-    @OutputTimeUnit(TimeUnit.MICROSECONDS)
+    @OutputTimeUnit(TimeUnit.SECONDS)
     public void test20() {
         testMethod(20);
     }
 
     @Benchmark
     @BenchmarkMode(Mode.All)
-    @OutputTimeUnit(TimeUnit.MICROSECONDS)
+    @OutputTimeUnit(TimeUnit.SECONDS)
     public void test10BigInteger() {
         testMethodBigInteger(10);
     }
 
     @Benchmark
     @BenchmarkMode(Mode.All)
-    @OutputTimeUnit(TimeUnit.MICROSECONDS)
+    @OutputTimeUnit(TimeUnit.SECONDS)
     public void test20BigInteger() {
         testMethodBigInteger(20);
     }

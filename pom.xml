@@ -2,21 +2,23 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.tutorial.jmh</groupId>
-    <artifactId>hello</artifactId>
-    <version>1.0</version>
+    <groupId>net.learn.java.jmh</groupId>
+    <artifactId>perftest</artifactId>
+    <version>0.0.1</version>
     <packaging>jar</packaging>
 
-    <name>JMH benchmark sample: Java</name>
-
-    <!--
-       This is the demo/sample template build script for building Java benchmarks with JMH.
-       Edit as needed.
-    -->
+    <name>JMH benchmark performance tests</name>
 
     <prerequisites>
         <maven>3.0</maven>
     </prerequisites>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jmh.version>1.16</jmh.version>
+        <javac.target>1.8</javac.target>
+        <uberjar.name>benchmarks</uberjar.name>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -35,7 +37,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.20</version>
+            <version>LATEST</version>
         </dependency>
 
         <!-- dependency for log4j2 -->
@@ -51,13 +53,6 @@
         </dependency>
 
     </dependencies>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jmh.version>1.11.3</jmh.version>
-        <javac.target>1.6</javac.target>
-        <uberjar.name>benchmarks</uberjar.name>
-    </properties>
 
     <build>
         <plugins>
